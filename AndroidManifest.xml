@@ -30,6 +30,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.exemplo.androidsqlite.Main" />
         </activity>
+        <activity
+            android:name="br.com.exemplo.androidsqlite.Listar"
+            android:label="@string/title_activity_listar"
+            android:parentActivityName="br.com.exemplo.androidsqlite.Main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.exemplo.androidsqlite.Main" />
+        </activity>
     </application>
 
 </manifest>

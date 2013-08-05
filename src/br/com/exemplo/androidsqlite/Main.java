@@ -20,6 +20,7 @@ public class Main extends Activity {
 	}
 	
 	public void listar(View view) {
-		
+		Intent intent = new Intent(this, Listar.class);
+		startActivity(intent);
 	}
 }
