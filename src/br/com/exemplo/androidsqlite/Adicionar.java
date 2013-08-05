@@ -20,6 +20,16 @@ public class Adicionar extends Activity {
 		
 		this.pessoa = new Pessoa();
 		this.banco = new Banco(getApplicationContext());
+		
+		if(getIntent().getSerializableExtra("pessoa") != null) {
+			this.pessoa = (Pessoa) getIntent().getSerializableExtra("pessoa");
+			
+			EditText nome = (EditText)findViewById(R.id.editTextNome);
+			nome.setText(this.pessoa.getNome());
+			
+			EditText telefone = (EditText)findViewById(R.id.editTextTelefone);
+			telefone.setText(this.pessoa.getTelefone());
+		}
 	}
 	
 	public void salvar(View view) {
@@ -30,11 +40,20 @@ public class Adicionar extends Activity {
 		EditText telefone = (EditText)findViewById(R.id.editTextTelefone);
 		this.pessoa.setTelefone(telefone.getText().toString());
 		
-		if(this.banco.insert(this.pessoa)) {
-			Toast.makeText(getApplicationContext(), "Pessoa Cadastrada com sucesso!", Toast.LENGTH_SHORT).show();
-			finish();
+		if(this.pessoa.getId() == null) {
+			if(this.banco.insert(this.pessoa)) {
+				Toast.makeText(getApplicationContext(), "Pessoa Cadastrada com sucesso!", Toast.LENGTH_SHORT).show();
+				finish();
+			} else {
+				Toast.makeText(getApplicationContext(), "Ocorreu um erro ao Cadastrar uma Pessoa!", Toast.LENGTH_SHORT).show();
+			}
 		} else {
-			Toast.makeText(getApplicationContext(), "Ocorreu um erro ao Cadastrar uma Pessoa!", Toast.LENGTH_SHORT).show();
+			if(this.banco.update(this.pessoa)) {
+				Toast.makeText(getApplicationContext(), "Pessoa Editada com sucesso!", Toast.LENGTH_SHORT).show();
+				finish();
+			} else {
+				Toast.makeText(getApplicationContext(), "Ocorreu um erro ao Editar uma Pessoa!", Toast.LENGTH_SHORT).show();
+			}
 		}
 	}
 }

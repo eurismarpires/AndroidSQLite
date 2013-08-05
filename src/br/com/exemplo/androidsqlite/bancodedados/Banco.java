@@ -31,6 +31,7 @@ public class Banco {
 	/* SQL INSERT, DELETE e UPDATE. */
 	private static final String SQL_SELECT_ALL = "SELECT * FROM pessoa ORDER BY nome";
 	private static final String SQL_SELECT_NOME = "SELECT * FROM pessoa WHERE nome = '%s'";
+	private static final String SQL_SELECT_ID = "SELECT * FROM pessoa WHERE id = '%s'";
 	
 	/* Classe com métodos para executar os comandos SQL e manipular o banco de dados. */
 	private SQLiteDatabase banco;
@@ -99,6 +100,23 @@ public class Banco {
 			pessoas.add(pessoa);
 		}
 		return pessoas;
+	}
+	
+	/* Método que recupera um registro pelo ID. */
+	public Pessoa getPorId(String id) {
+		Pessoa pessoa = null;
+		
+		String query = String.format(SQL_SELECT_ID, id);
+		this.cursor = this.banco.rawQuery(query, null);
+		configuraIndex();
+		
+		if(this.cursor.moveToFirst()) {
+			pessoa = new Pessoa(this.cursor.getString(this.indexId), 
+					this.cursor.getString(this.indexNome), 
+					this.cursor.getString(this.indexTelefone));
+		}
+			
+		return pessoa;
 	}
 	
 	/* Método que edita um registro baseado no ID. */

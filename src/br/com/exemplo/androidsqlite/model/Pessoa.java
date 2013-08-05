@@ -1,6 +1,8 @@
 package br.com.exemplo.androidsqlite.model;
 
-public class Pessoa {
+import java.io.Serializable;
+
+public class Pessoa implements Serializable{
 
 	private String id;
 	private String nome;

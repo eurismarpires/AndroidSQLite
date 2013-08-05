@@ -38,6 +38,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.exemplo.androidsqlite.Main" />
         </activity>
+        <activity
+            android:name="br.com.exemplo.androidsqlite.Visualizar"
+            android:label="@string/title_activity_visualizar"
+            android:parentActivityName="br.com.exemplo.androidsqlite.Main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.exemplo.androidsqlite.Main" />
+        </activity>
     </application>
 
 </manifest>
