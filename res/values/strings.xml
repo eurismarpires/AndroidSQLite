@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AndroidSQLite</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="buttonAdd">Adicionar Pessoa</string>
+    <string name="buttonList">Listar Pessoas</string>
+    <string name="buttonSalvar">Salvar</string>
+    
+    <string name="hintNome">Nome</string>
+    <string name="hintTelefone">Telefone</string>
+    
+    <string name="title_activity_adicionar">Adicionar</string>
+
+</resources>
